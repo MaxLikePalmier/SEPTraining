@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("university")
@@ -28,12 +27,7 @@ public class UniversityController {
 
     @GetMapping("country")
     public ResponseEntity<List<University>> findByCountryList(@RequestBody List<String> country) {
-        CompletableFuture<List<University>> universitiesFuture = universityService.findByCountryList(country);
-        try {
-            List<University> universities = universitiesFuture.get();
-            return new ResponseEntity<>(universities, HttpStatus.OK);
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
+        List<University> universities = universityService.findByCountryList(country);
+        return new ResponseEntity<>(universities, HttpStatus.OK);
     }
 }
