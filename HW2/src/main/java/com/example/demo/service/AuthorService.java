@@ -10,7 +10,6 @@ public interface AuthorService {
     List<Author> getAuthors();
     Set<Author> getAuthorsByBook(Integer bookId);
     Optional<Author> getAuthorsByName(String author);
-    Author addAuthor(Author author);
     Author updateAuthor(Author author);
-    void deleteAuthor(Author author);
+    void deleteAuthor(Integer id);
 }

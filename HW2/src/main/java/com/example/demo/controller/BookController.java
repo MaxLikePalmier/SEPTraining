@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Book;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,17 +35,17 @@ public class BookController {
     public ResponseEntity<?> updateBook(@RequestBody Book book) {
         try {
             return new ResponseEntity<>(bookService.updateBook(book), HttpStatus.OK);
-        } catch (Exception e) {
+        } catch (ResourceNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteBook(@RequestBody Book book) {
+    @DeleteMapping(params = "bookId")
+    public ResponseEntity<?> deleteBook(@RequestParam("bookId") Integer bookId) {
         try {
-            bookService.deleteBook(book);
+            bookService.deleteBook(bookId);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
+        } catch (ResourceNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }

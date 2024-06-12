@@ -35,11 +35,6 @@ public class AuthorServiceImp implements AuthorService {
     }
 
     @Override
-    public Author addAuthor(Author author) {
-        return authorRepo.save(author);
-    }
-
-    @Override
     public Author updateAuthor(Author author) {
         Author old = authorRepo.findById(author.getId()).get();
         try {
@@ -51,8 +46,8 @@ public class AuthorServiceImp implements AuthorService {
     }
 
     @Override
-    public void deleteAuthor(Author author) {
-        Author old = authorRepo.findById(author.getId()).get();
+    public void deleteAuthor(Integer id) {
+        Author old = authorRepo.findById(id).get();
         try {
             authorRepo.delete(old);
         } catch (NullPointerException e) {

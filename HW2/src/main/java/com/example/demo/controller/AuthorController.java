@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Author;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,26 +26,26 @@ public class AuthorController {
         return new ResponseEntity<>(authorService.getAuthorsByBook(bookId), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<?> addAuthor(@RequestBody Author author) {
-        return new ResponseEntity<>(authorService.addAuthor(author), HttpStatus.OK);
+    @GetMapping(params = "authorName")
+    public ResponseEntity<?> getAuthorsByName(@RequestParam("authorName") String authorName) {
+        return new ResponseEntity<>(authorService.getAuthorsByName(authorName), HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<?> updateAuthor(@RequestBody Author author) {
         try {
             return new ResponseEntity<>(authorService.updateAuthor(author), HttpStatus.OK);
-        } catch (Exception e) {
+        } catch (ResourceNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteAuthor(@RequestBody Author author) {
+    @DeleteMapping(params = "authorId")
+    public ResponseEntity<?> deleteAuthor(@RequestParam("authorId") Integer authorId) {
         try {
-            authorService.deleteAuthor(author);
+            authorService.deleteAuthor(authorId);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
+        } catch (ResourceNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }

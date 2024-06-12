@@ -10,5 +10,5 @@ public interface BookService {
     Set<Book> getBooksByAuthor(Integer authorId);
     Book addBook(Book book);
     Book updateBook(Book book);
-    void deleteBook(Book book);
+    void deleteBook(Integer id);
 }

@@ -65,8 +65,8 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public void deleteBook(Book book) {
-        Book old = bookRepo.findById(book.getId()).get();
+    public void deleteBook(Integer id) {
+        Book old = bookRepo.findById(id).get();
         try {
             bookRepo.delete(old);
         } catch (NullPointerException e) {
