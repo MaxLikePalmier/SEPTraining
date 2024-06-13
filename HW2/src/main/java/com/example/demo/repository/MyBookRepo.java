@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.entity.Book;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
@@ -9,7 +10,7 @@ import java.util.Optional;
 @NoRepositoryBean
 public interface MyBookRepo<T, ID> extends Repository<T, ID> {
 
-    <S extends T> S save(S entity);
+    <S extends T> Book save(S entity);
 
     Optional<T> findById(ID id);
 
