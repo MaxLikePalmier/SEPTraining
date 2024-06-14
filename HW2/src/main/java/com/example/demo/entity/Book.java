@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -25,6 +24,6 @@ public class Book {
     )
     private Set<Author> authors;
 
-    @OneToMany(mappedBy = "book")
-    private List<BookAuthor> bookAuthor;
+//    @OneToMany(mappedBy = "book")
+//    private List<BookAuthor> bookAuthor;
 }

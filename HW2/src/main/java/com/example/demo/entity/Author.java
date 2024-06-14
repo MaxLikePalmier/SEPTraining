@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -23,6 +22,6 @@ public class Author {
     @JsonIgnore
     private Set<Book> books;
 
-    @OneToMany(mappedBy = "author")
-    private List<BookAuthor> bookAuthor;
+//    @OneToMany(mappedBy = "author")
+//    private List<BookAuthor> bookAuthor;
 }

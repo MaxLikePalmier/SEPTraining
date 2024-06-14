@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+/**
+ *  configuration class for swagger-ui
+ */
 @Configuration
 public class OpenAPIConfig {
 

@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ *  invoke logger whenever a service layer function called
+ */
 @Aspect
 @Component
 public class LoggingAspect {
